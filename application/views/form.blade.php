@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
@@ -28,7 +27,7 @@
   <main>
     <h1 class="text-body-emphasis">Ujian Pemrograman Web</h1>
     <hr class="col-3 col-md-2 mb-5">
-    
+
     <div class="row g-5">
       <div class="col-md-6">
         <h2 class="text-body-emphasis">Form Input Artikel</h2>
@@ -36,19 +35,29 @@
         <form method="post" action="{{ site_url('Welcome/simpan') }}">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Username</label>
-                <select class = "form-control" name="user_id" id="">
-                  @foreach ($user_list as $user)
-                    <option value="{{ $user->id }}">{{ $user->username }}</option>
+                <select class="form-control" name="username">
+                  @foreach($avail_user as $user)
+                  <option value="{{ $user->id }}">{{ $user->username }}</option>
                   @endforeach
                 </select>
             </div>
+            <label for="exampleInputEmail1" class="form-label">Jenis</label>
+            <div>
+            <input type="radio" id="berita" name="fav_language" value="Berita"> 
+            <label for="berita">Berita</label>
+             <input type="radio" id="tutorial" name="fav_language" value="Tutorial">
+             <label for="tutorial">Tutorial</label>
+              <input type="radio" id="blog" name="fav_language" value="Blog">
+            <label for="blog">Blog</label>
+            </div>
+            <br>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Artikel</label>
-                <textarea class="form-control" id="nama" name="article" rows="3" required></textarea>
+                <textarea class="form-control" id="nama" name="artikel" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a class="btn btn-secondary" href="{{ site_url('Welcome/tampil') }}">Tampil</a>
-          </form>
+            <a class="btn btn-secondary" href="{{site_url('Welcome/tampil')}}">Tampil</a>
+        </form>
       </div>
     </div>
   </main>
